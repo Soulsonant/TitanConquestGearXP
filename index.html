@@ -2,10 +2,9 @@
 <html>
   <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
 <script>
   var myCalc = $('#myCalc');
-myCalc.on('click', function(){
+    myCalc.on('click', function(){
   var total_exp = parseFloat($('#texp').val().replace(/,/g,""));
   var additional = parseFloat($('#add').val().replace(/,/g,""));
   var gear_exp = parseFloat($('#gxp').val());
@@ -33,6 +32,9 @@ myCalc.on('click', function(){
   $('#rgxp').val(target);
 });
   </script>
+  </head>
+  
+<body>  
   <form>
   <label for="texp">Total EXP:</label><br>
   <input type="text" id="texp" name="texp" value="517,000,000,000"><br>
@@ -61,5 +63,5 @@ Run Calc
 <input type="text" id="rgxp" name="rgxp" value="">
 </form>
   
-  
+  </body>
 </html>
