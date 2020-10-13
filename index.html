@@ -1,4 +1,65 @@
 
 <html>
-<script async src="//jsfiddle.net/2vnb9uhL/1/embed/"></script>
+  <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<script>
+  var myCalc = $('#myCalc');
+myCalc.on('click', function(){
+  var total_exp = parseFloat($('#texp').val().replace(/,/g,""));
+  var additional = parseFloat($('#add').val().replace(/,/g,""));
+  var gear_exp = parseFloat($('#gxp').val());
+  
+  var cost_rate = 0.01;
+  var gain_rate = 0.00000112511;
+  var target = 2000000000.0;
+  var infusions = 0;
+  var current_exp = total_exp;
+  var cost = 0.0;
+  var gain = 0.0;
+  
+  while (gear_exp < target) {
+  	cost = current_exp * cost_rate;
+    gain = current_exp * gain_rate;
+    gear_exp = gear_exp + gain;
+    current_exp = current_exp - cost;
+    infusions++;
+    current_exp = current_exp + additional;
+  }
+  
+  $('#rsxp').val(total_exp);
+  $('#radd').val(additional);
+  $('#rinf').val(infusions);
+  $('#rgxp').val(target);
+});
+  </script>
+  <form>
+    <label for="texp">Total EXP:</label><br>
+    <input type="text" id="texp" name="texp" value="1000000"><br>
+   <label for="add">Daily XP Gain:</label><br>
+    <input type="text" id="add" name="add" value="12000"><br>
+    <label for="add">Gear XP:</label><br>
+    <input type="text" id="gxp" name="gxp" value="1000"><br>
+  
+    <br>
+    </form>
+
+  <button id="myCalc">
+  Run Calc
+  </button>
+
+<form>
+<label>RESULTS:</label><br />
+<label>For starting XP of:</label>
+<input type="text" id="rsxp" name="rsxp" value="">
+<label> with additional </label>
+<input type="text" id="radd" name="radd" value="">
+<label> XP after each infusion:</label><br />
+<label>It will take</label>
+<input type="text" id="rinf" name="rinf" value="">
+<label>infusions to reach target gear XP of </label>
+<input type="text" id="rgxp" name="rgxp" value="">
+</form>
+  
+  
 </html>
