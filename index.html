@@ -1,8 +1,35 @@
-
 <html>
   <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<script>
+  function myCalc(){
+  var total_exp = parseFloat($('#texp').val().replace(/,/g,""));
+  var additional = parseFloat($('#add').val().replace(/,/g,""));
+  var gear_exp = parseFloat($('#gxp').val());
+  
+  var cost_rate = 0.01;
+  var gain_rate = 0.00000112511;
+  var target = 2000000000.0;
+  var infusions = 0;
+  var current_exp = total_exp;
+  var cost = 0.0;
+  var gain = 0.0;
+  
+  while (gear_exp < target) {
+      cost = current_exp * cost_rate;
+    gain = current_exp * gain_rate;
+    gear_exp = gear_exp + gain;
+    current_exp = current_exp - cost;
+    infusions++;
+    current_exp = current_exp + additional;
+  }
+  
+  $('#rsxp').val(total_exp);
+  $('#radd').val(additional);
+  $('#rinf').val(infusions);
+  $('#rgxp').val(target);
+};
+  </script>
   </head>
   
 <body>  
@@ -17,41 +44,10 @@
   <br>
 </form>
 
-<button id="myCalc">
+<button type="button" onclick="myCalc()">
 Run Calc
 </button>
 
-  <script>
-  var myCalc = $('#myCalc');
-    myCalc.on('click', function(){
-  var total_exp = parseFloat($('#texp').val().replace(/,/g,""));
-  var additional = parseFloat($('#add').val().replace(/,/g,""));
-  var gear_exp = parseFloat($('#gxp').val());
-  
-  var cost_rate = 0.01;
-  var gain_rate = 0.00000112511;
-  var target = 2000000000.0;
-  var infusions = 0;
-  var current_exp = total_exp;
-  var cost = 0.0;
-  var gain = 0.0;
-  
-  while (gear_exp < target) {
-  	cost = current_exp * cost_rate;
-    gain = current_exp * gain_rate;
-    gear_exp = gear_exp + gain;
-    current_exp = current_exp - cost;
-    infusions++;
-    current_exp = current_exp + additional;
-  }
-  
-  $('#rsxp').val(total_exp);
-  $('#radd').val(additional);
-  $('#rinf').val(infusions);
-  $('#rgxp').val(target);
-});
-  </script>
-  
 <form>
 <label>RESULTS:</label><br />
 <label>For starting XP of:</label>
