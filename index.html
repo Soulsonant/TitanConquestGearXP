@@ -6,6 +6,7 @@
   var total_exp = parseFloat($('#texp').val().replace(/,/g,""));
   var additional = parseFloat($('#add').val().replace(/,/g,""));
   var gear_exp = parseFloat($('#gxp').val());
+  var daily_transfuses = parseFloat($('#dtf').val());
   
   var cost_rate = 0.01;
   var gain_rate = 0.00000112511;
@@ -14,32 +15,39 @@
   var current_exp = total_exp;
   var cost = 0.0;
   var gain = 0.0;
+  var days = 0;
+  var i;
   
   while (gear_exp < target) {
-      cost = current_exp * cost_rate;
+    for ( i = 0, i < daily_transfuses, i++ ){
+    cost = current_exp * cost_rate;
     gain = current_exp * gain_rate;
     gear_exp = gear_exp + gain;
     current_exp = current_exp - cost;
     infusions++;
+    }
     current_exp = current_exp + additional;
+    days++;
   }
   
   $('#rsxp').val(total_exp);
   $('#radd').val(additional);
   $('#rinf').val(infusions);
-  $('#rgxp').val(target);
+  $('#rdtf').val(daily_transfuses);
 };
   </script>
   </head>
   
 <body>  
   <form>
-  <label for="texp">Total EXP:</label><br>
+  <label for="texp">Your Current Total EXP:</label><br>
   <input type="text" id="texp" name="texp" value="517,000,000,000"><br>
   <label for="add">Daily XP Gain: (don't put 0 here, you'll crash the poor program, don't say I didn't warn you!)</label><br>
   <input type="text" id="add" name="add" value="30,000,000,000"><br>
   <label for="add">Gear XP:</label><br>
   <input type="text" id="gxp" name="gxp" value="0"><br>
+    <label for="add">Infusions Per Day:</label><br>
+    <input type="text" id="dtf" name="dtf" value="0"><br>
   
   <br>
 </form>
@@ -51,8 +59,10 @@ Run Calc
 <form>
 <label>RESULTS:</label><br />
 <label>It will take</label>
+  <input type="text" id="rdtf" name="rdtf" value="">
+  <label> days and</label>
 <input type="text" id="rinf" name="rinf" value="">
-  <label> free daily transfuses to reach Onyx Tier.</label>
+  <label> transfuses to reach Onyx Tier.</label>
 </form>
   
   </body>
