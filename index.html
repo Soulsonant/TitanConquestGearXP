@@ -5,7 +5,7 @@
   function myCalc(){
   var total_exp = parseFloat($('#texp').val().replace(/,/g,""));
   var additional = parseFloat($('#add').val().replace(/,/g,""));
-  var gear_exp = parseFloat($('#gxp').val());
+  var gear_exp = parseFloat($('#gxp').val().replace(/,/g,""));
   var daily_transfuses = parseFloat($('#dtf').val());
   
   var cost_rate = 0.01;
