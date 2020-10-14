@@ -19,7 +19,7 @@
   var i;
   
   while (gear_exp < target) {
-    for ( i = 0, i < daily_transfuses, i++ ){
+    for ( i = 0; i < daily_transfuses; i++ ){
     cost = current_exp * cost_rate;
     gain = current_exp * gain_rate;
     gear_exp = gear_exp + gain;
