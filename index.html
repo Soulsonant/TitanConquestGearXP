@@ -12,6 +12,7 @@
   var cost_rate = 0.01;
   var gain_rate = 0.00000112511;
   var target = 2000000000.0;
+  var add_xp_gain = additional/71104.0;
   var infusions = 0;
   var current_exp = total_exp;
   var cost = 0.0;
@@ -25,16 +26,17 @@
     }
   
   
+  
   while (gear_exp < target) {
     for ( i = 0; i < daily_transfuses; i++ ){
     cost = current_exp * cost_rate;
-    gain = current_exp * gain_rate;
-    gain = gain * crazy_tapper;
-    gear_exp = gear_exp + gain;
+    gain = current_exp * gain_rate * crazy_tapper;
+    gear_exp = gear_exp + gain + add_xp_gain;
     current_exp = current_exp - cost;
     infusions++;
     }
     current_exp = current_exp + additional;
+    
     days++;
   }
   
