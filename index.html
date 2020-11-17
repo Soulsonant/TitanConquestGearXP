@@ -7,6 +7,7 @@
   var additional = parseFloat($('#add').val().replace(/,/g,""));
   var gear_exp = parseFloat($('#gxp').val().replace(/,/g,""));
   var daily_transfuses = parseFloat($('#dtf').val());
+  var crazy_tapper_check = document.getElementbyID("ct").checked;
   
   var cost_rate = 0.01;
   var gain_rate = 0.00000112511;
@@ -17,11 +18,18 @@
   var gain = 0.0;
   var days = 0;
   var i;
+  var crazy_tapper = 1;
+  
+    if(crazy_tapper_check = true) {
+      crazy_tapper = 2;
+    }
+  
   
   while (gear_exp < target) {
     for ( i = 0; i < daily_transfuses; i++ ){
     cost = current_exp * cost_rate;
     gain = current_exp * gain_rate;
+    gain = gain * crazy_tapper;
     gear_exp = gear_exp + gain;
     current_exp = current_exp - cost;
     infusions++;
@@ -48,6 +56,8 @@
   <input type="text" id="gxp" name="gxp" value="0"><br>
     <label for="add">Transposes Per Day:</label><br>
     <input type="text" id="dtf" name="dtf" value="1"><br>
+    <input type="checkbox" id="ct" name="ct">
+    <label for="add">Crazy Tapper?</label><br>
   
   <br>
 </form>
