@@ -8,6 +8,7 @@
   var gear_exp = parseFloat($('#gxp').val().replace(/,/g,""));
   var daily_transfuses = parseFloat($('#dtf').val());
   var crazy_tapper_check = document.getElementById("ct").checked;
+  var muse_button = document.getElementById("musebutton").checked;
   
   var cost_rate = 0.01;
   var gain_rate = 0.00000112511;
@@ -39,11 +40,18 @@
     
     days++;
   }
-  
+  if(muse_button){
+  }else
+  $('#rsxp').val(total_exp);
+  $('#radd').val(additional);
+  $('#rinf').val("TOMORROW");
+  $('#rdtf').val("TOMORROW");
+  {
   $('#rsxp').val(total_exp);
   $('#radd').val(additional);
   $('#rinf').val(infusions);
   $('#rdtf').val(days);
+  }
 };
   </script>
   </head>
@@ -60,6 +68,8 @@
     <input type="text" id="dtf" name="dtf" value="1"><br>
     <input type="checkbox" id="ct" name="ct">
     <label for="add">Crazy Tapper?</label><br>
+    <input type="checkbox" id="musebutton" name="musebutton">
+    <label for="add">Do you want this webpage to lie to you?"</label><br><br>
   
   <br>
 </form>
