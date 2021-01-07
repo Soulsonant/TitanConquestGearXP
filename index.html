@@ -21,6 +21,8 @@
   var days = 0;
   var i;
   var crazy_tapper = 1.0;
+  var ac_daily = 0.0;
+  var ac_total = 0.0;
   
     if(crazy_tapper_check) {
       crazy_tapper = 2.0;
@@ -35,9 +37,15 @@
     gear_exp = gear_exp + gain + add_xp_gain;
     current_exp = current_exp - cost;
     infusions++;
+    ac_daily = 10 * i;
+    if(gear_exp > target)
+    	break;
+    if(current_exp < 2000000000)  
+    	break;
     }
     current_exp = current_exp + additional;
-    
+    ac_total = ac_total + ac_daily;
+    ac_daily = 0.0;
     days++;
   }
   if(muse_button){
@@ -45,11 +53,13 @@
   $('#radd').val(additional);
   $('#rinf').val("TOMORROW");
   $('#rdtf').val("TOMORROW");
+  $('#acac').val("FREE");
   }else{
   $('#rsxp').val(total_exp);
   $('#radd').val(additional);
   $('#rinf').val(infusions);
   $('#rdtf').val(days);
+  $('#acac').val(ac_total);
   }
 };
   </script>
@@ -84,6 +94,10 @@ Run Calc
   <label> days and</label>
 <input type="text" id="rinf" name="rinf" value="">
   <label> transfuses to reach Onyx Tier.</label>
+  <br>
+<label>This will cost you</label>
+  <input type="text" id="acac" name="acac" value="">
+  <label> total AC.</label>
 </form>
   
    <br>
