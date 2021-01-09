@@ -34,7 +34,7 @@
     for ( i = 0; i < daily_transfuses; i++ ){
     cost = current_exp * cost_rate;
     gain = current_exp * gain_rate * crazy_tapper;
-    gear_exp = gear_exp + gain + add_xp_gain;
+    gear_exp = gear_exp + gain;
     current_exp = current_exp - cost;
     infusions++;
     ac_daily = ac_daily + (10 * i);
@@ -43,6 +43,7 @@
     if(current_exp < 2000000000)  
     	break;
     }
+    gear_exp = gear_exp + add_xp_gain;
     current_exp = current_exp + additional;
     ac_total = ac_total + ac_daily;
     ac_daily = 0.0;
