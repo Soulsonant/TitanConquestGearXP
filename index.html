@@ -1,4 +1,31 @@
 <html>
+  <style>
+     form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+#texp,
+#add,
+#gxp,
+#dtf {
+  text-align: right;
+  float: right;
+}
+.form-field {
+  position: relative;
+  margin: 6px 6px 0 6px;
+  min-width: 100%;
+}
+p.help {
+  margin: 0 0 0 6px;
+  font-size: 12px;
+  font-style: italic;
+}
+button {
+  display: block;
+  margin: 0 auto;
+}
+  </style>
   <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
@@ -62,31 +89,7 @@ function myCalc(){
 };
   </script>
   </head>
-  form {
-  max-width: 500px;
-  margin: 0 auto;
-}
-#texp,
-#add,
-#gxp,
-#dtf {
-  text-align: right;
-  float: right;
-}
-.form-field {
-  position: relative;
-  margin: 6px 6px 0 6px;
-  min-width: 100%;
-}
-p.help {
-  margin: 0 0 0 6px;
-  font-size: 12px;
-  font-style: italic;
-}
-button {
-  display: block;
-  margin: 0 auto;
-}
+ 
 <body>  
   <form>
   <p class="form-field"><label for="texp">Your Current Total EXP:</label>
