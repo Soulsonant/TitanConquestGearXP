@@ -1,8 +1,7 @@
 <html>
   <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-  function myCalc(){
+function myCalc(){
   var total_exp = parseFloat($('#texp').val().replace(/,/g,""));
   var additional = parseFloat($('#add').val().replace(/,/g,""));
   var gear_exp = parseFloat($('#gxp').val().replace(/,/g,""));
@@ -51,32 +50,54 @@
     days++;
   }
   if(muse_button){
-  $('#rsxp').val(total_exp);
-  $('#radd').val(additional);
-  $('#rinf').val("TOMORROW");
-  $('#rdtf').val("TOMORROW");
-  $('#acac').val("FREE");
+  $('#rinf').text("TOMORROW");
+  $('#rdtf').text("TOMORROW");
+  $('#acac').text("FREE");
   }else{
-  $('#rsxp').val(total_exp);
-  $('#radd').val(additional);
-  $('#rinf').val(infusions);
-  $('#rdtf').val(days);
-  $('#acac').val(ac_total);
+  $('#rinf').text(infusions);
+  $('#rdtf').text(days);
+  $('#acac').text(ac_total);
   }
 };
   </script>
   </head>
-  
+  form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+#texp,
+#add,
+#gxp,
+#dtf {
+  text-align: right;
+  float: right;
+}
+.form-field {
+  position: relative;
+  margin: 6px 6px 0 6px;
+  min-width: 100%;
+}
+p.help {
+  margin: 0 0 0 6px;
+  font-size: 12px;
+  font-style: italic;
+}
+button {
+  display: block;
+  margin: 0 auto;
+}
 <body>  
   <form>
-  <label for="texp">Your Current Total EXP:</label><br>
-  <input type="text" id="texp" name="texp" value="517,000,000,000"><br>
-  <label for="add">Daily XP Gain: (don't put 0 here, you'll crash the poor program, don't say I didn't warn you!)</label><br>
-  <input type="text" id="add" name="add" value="30,000,000,000"><br>
-  <label for="add">Current Gear Piece XP:</label><br>
-  <input type="text" id="gxp" name="gxp" value="0"><br>
-    <label for="add">Transposes Per Day:</label><br>
-    <input type="text" id="dtf" name="dtf" value="1"><br>
+  <p class="form-field"><label for="texp">Your Current Total EXP:</label>
+  <input type="text" id="texp" name="texp" value="517,000,000,000"></p><p class="form-field">
+  <label for="add">Daily XP Gain: </label>
+    <input type="text" id="add" name="add" value="30,000,000,000">
+    <p class="help">(don't put 0 here, you'll crash the poor program, don't say I didn't warn you!)</p>
+    </p><p class="form-field">
+  <label for="add">Current Gear Piece XP:</label>
+  <input type="text" id="gxp" name="gxp" value="0"></p><p class="form-field">
+    <label for="add">Transposes Per Day:</label>
+  <input type="text" id="dtf" name="dtf" value="1"></p>
     <input type="checkbox" id="ct" name="ct">
     <label for="add">Crazy Tapper?</label><br>
     <input type="checkbox" id="musebutton" name="musebutton">
@@ -92,13 +113,13 @@ Run Calc
 <form>
 <label>RESULTS:</label><br />
 <label>It will take</label>
-  <input type="text" id="rdtf" name="rdtf" value="">
+  <span id="rdtf">N/A</span>
   <label> days and</label>
-<input type="text" id="rinf" name="rinf" value="">
+  <span id="rinf">N/A</span>
   <label> transfuses to reach Onyx Tier.</label>
   <br>
 <label>This will cost you</label>
-  <input type="text" id="acac" name="acac" value="">
+  <span id="acac">N/A</span>
   <label> total AC.</label>
 </form>
   
